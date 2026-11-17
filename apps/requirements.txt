@@ -1,0 +1,3 @@
+# Desktop and network real-time apps (in addition to ../requirements.txt for the server/local app)
+sounddevice>=0.5
+pyzmq>=26

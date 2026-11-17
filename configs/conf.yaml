@@ -1,0 +1,34 @@
+hdemucs_conf:
+  channels: 48
+  cac: false
+  samplerate: 44100
+
+optimizer_conf:
+  lr: 5.0e-5
+  eps: 1.0e-07
+  weight_decay: 1.0e-5
+
+dataset:
+  # CSVs con la receta de cada mezcla (rutas relativas a la raíz del repositorio)
+  train_csv: ./data/info/train_mixtures.csv
+  val_estandar_csv: ./data/info/val_estandar_mixtures.csv
+  val_poco_reverb_csv: ./data/info/val_poco_reverb_mixtures.csv
+  val_reverb_csv: ./data/info/val_reverb_mixtures.csv
+  
+  # Carpeta con las RIRs simuladas (.mat) generadas con SMIR-generator
+  rir_root_dir: ./data/rirs/
+  
+  chunk_duration: 5 # Segundos de audio que entrarán a la red
+  sample_rate: 44100
+  batch_size:  25  
+  seed: 115
+  train_valid_split_sizes:
+    - .8
+    - .2
+  num_workers: 16
+
+train:
+  loss_function: l1   # l1, auraloss, perceptual, sdr
+  permute_sources: false
+  num_epochs: 200
+  exp_name: Spheres_HDEMUCS

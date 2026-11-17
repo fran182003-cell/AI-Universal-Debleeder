@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Data, models and outputs (too large or not redistributable)
+# Only the mixture/RIR CSV manifests in data/info are versioned
+data/*
+!data/info/
+lightning_logs/
+logs/
+*.ckpt
+*.pt
+*.pth
+*.mat
+*.wav
+*.flac
+
+# Web monitor build artifacts
+*.sif
+zylia-service.lock
+zylia-completo-*.out

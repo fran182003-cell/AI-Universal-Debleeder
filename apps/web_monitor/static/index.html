@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#dce5e8">
+  <title>Zylia · Monitor espacial</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <div class="institution-bar" aria-label="Evento e instituciones participantes">
+        <div class="institution-item event-item">
+          <div class="institution-logo">
+            <img
+              src="/static/assets/noche-europea.png"
+              alt="La Noche Europea de los Investigadores"
+            >
+          </div>
+        </div>
+        <div class="institution-item">
+          <div class="institution-logo">
+            <img
+              src="/static/assets/uja.png"
+              alt="Universidad de Jaén"
+            >
+          </div>
+        </div>
+        <div class="institution-item">
+          <div class="institution-logo">
+            <img
+              src="/static/assets/epsl.png"
+              alt="Escuela Politécnica Superior de Linares"
+            >
+          </div>
+        </div>
+      </div>
+      <div class="topbar">
+        <a class="brand" href="/" aria-label="Monitor espacial Zylia">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>ZYLIA / SEPARACIÓN</span>
+        </a>
+        <div class="connection" role="status" aria-live="polite">
+          <span id="connectionDot" class="status-dot"></span>
+          <span id="connectionText">Conectando</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="intro">
+        <p class="eyebrow">Monitor de campo sonoro · 44,1 kHz</p>
+        <h1>Escucha el espacio,<br><em>una dirección cada vez.</em></h1>
+        <p class="lede">Selecciona una salida del modelo para monitorizar en directo la separación espacial procesada en el servidor GPU.</p>
+
+        <button id="listenButton" class="listen-button" type="button">
+          <span class="play-icon" aria-hidden="true"></span>
+          <span id="listenLabel">Activar escucha</span>
+        </button>
+
+        <div id="notice" class="notice" aria-live="polite">La reproducción necesita una acción del usuario.</div>
+      </div>
+
+      <div class="spatial-panel" aria-labelledby="spatialTitle">
+        <div class="panel-heading">
+          <div>
+            <p class="panel-kicker">Matriz de salida</p>
+            <h2 id="spatialTitle">Dirección activa</h2>
+          </div>
+          <output id="angleReadout" class="angle-readout">000°</output>
+        </div>
+
+        <div class="dial" id="channelDial">
+          <div class="orbit orbit-outer" aria-hidden="true"></div>
+          <div class="orbit orbit-inner" aria-hidden="true"></div>
+          <div class="array-core" aria-hidden="true">
+            <span>Z</span>
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <div id="channelButtons" class="channel-buttons" role="radiogroup" aria-label="Canal a escuchar"></div>
+          <svg class="direction-line" viewBox="0 0 100 100" aria-hidden="true">
+            <line id="directionLine" x1="50" y1="50" x2="50" y2="9"></line>
+          </svg>
+        </div>
+
+        <div class="selected-channel">
+          <span id="channelNumber">Canal 1</span>
+          <strong id="channelPosition">Posición 0°</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="monitor-strip" aria-label="Estado de la señal">
+      <div class="wave-wrap">
+        <div class="wave-label">
+          <span>Señal recibida</span>
+          <span id="signalState">Sin flujo</span>
+        </div>
+        <canvas id="waveform" aria-label="Forma de onda del canal seleccionado"></canvas>
+      </div>
+
+      <dl class="telemetry">
+        <div>
+          <dt>Bloque</dt>
+          <dd>4096 <small>muestras</small></dd>
+        </div>
+        <div>
+          <dt>Fuente</dt>
+          <dd id="sourceStatus">En espera</dd>
+        </div>
+        <div>
+          <dt>Oyentes</dt>
+          <dd id="listenerCount">0</dd>
+        </div>
+      </dl>
+    </section>
+
+    <footer>
+      <span>Beamforming esférico + HDemucs</span>
+      <span>Universidad de Jaén · EPS Linares</span>
+    </footer>
+  </main>
+
+  <script src="/static/app.js" defer></script>
+</body>
+</html>

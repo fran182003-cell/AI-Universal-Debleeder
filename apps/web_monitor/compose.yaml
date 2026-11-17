@@ -1,0 +1,11 @@
+services:
+  monitor-web:
+    build: .
+    image: zylia-monitor-web:latest
+    network_mode: host
+    environment:
+      WEB_HOST: ${WEB_HOST:-127.0.0.1}
+      WEB_PORT: 8088
+      STREAM_HOST: 127.0.0.1
+      STREAM_PORT: 7777
+    restart: unless-stopped

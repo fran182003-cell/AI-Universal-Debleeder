@@ -1,0 +1,4 @@
+mixture_id,room_id,rir_id,rir_filepath,rir_azimuth,rir_elevation,source_id,source_class,source_filepath,start_second
+1,55,6,rir/room55_6.mat,6.0929444187122,1.5707963267949,vocals,vocals,./MUSDB18/train/Music Delta - Disco/vocals.wav,13.786
+1,55,2,rir/room55_2.mat,1.72962128872638,1.5707963267949,vocals,vocals,./MUSDB18/train/Clara Berry And Wooldog - Waltz For My Victims/vocals.wav,44.465
+1,55,5,rir/room55_5.mat,3.47495054072071,1.5707963267949,vocals,vocals,./MUSDB18/test/Detsky Sad - Walkie Talkie/vocals.wav,43.921

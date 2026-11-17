@@ -1,0 +1,57 @@
+# =======================================================
+# CONFIGURATION FOR THE SMIR GENERATOR (CORREGIDO)
+# =======================================================
+version: v1.2
+
+# --- FILE AND FOLDER PATHS ---
+rutas:
+  dataset_dir: './datos_simulados' 
+  csv_dir: './datos_simulados/info'
+  srir_dir: './datos_simulados/rir_clean'
+  srir_type: 'clean' 
+  audio_dir: './datos_simulados/signals'
+  
+# --- General Parameters ---
+general:
+  c: 343                       # Speed of sound (m/s)
+  fs: 44100                    # Sampling frequency (Hz)
+  winlen: 2048                 # STFT window length
+
+# --- SMIR GENERATOR PARAMETERS ---
+rir_generator:
+  N_harm: 3                   
+  K: 1                         
+  reflectionOrder: 3  #15  (reverb)       10 (General)    3 (peque)
+  room_width: [3.0, 5.0]   #21 - 26   (reverb)   [5.5, 20.0] (General)  [3.0, 5.0] (peque)
+  room_length: [3.0, 5.0]  #21 - 26  (reverb)    [5.5, 20.0] (General)  [3.0, 5.0]  (peque)
+  room_height: [1.5, 3]      # 7-9 (reverb)  [3.5, 6.0] (General)   [1.5, 3]  (peque)
+  src_type: 'o'                
+  src_dist: [0.8, 1.2]         #3 - 5 (reverb)  [1.3, 2.5](General)  [0.8, 1.2]  (peque)
+  HP: 1                        
+  micType: 'rigid'             
+  
+
+  # --- NUEVOS PARÁMETROS: Barrido T60 y Fuentes ---
+  t60_min: 0.06               # Valor inicial del barrido T60     1.1 (reverb)   0.06 (peque) 0.2 (general)
+  t60_max: 0.15               # Valor máximo del barrido T60      1.4 (reverb)  0.15 (peque) 1.0 (general)
+  t60_paso: 0.01               # Tamaño del paso del barrido
+  fuentes_min: 2               # Número mínimo de fuentes activas
+  fuentes_max: 7               # Número máximo de fuentes activas
+  fuentes_z_pos: 1.2           # Altura fija (Z) de las fuentes en metros
+  paso_angular_deg: 50         # Separación angular mínima entre fuentes (grados)
+
+
+# --- EIGENMIKE PARAMETERS ---
+eigenmike:
+  micType: 'rigid'   
+  mic_height: 1.3    
+  w: 1             
+  mic_r: 0.049   
+  mic_az: [0, 0.0306, 2.096, 4.1898, 4.8512, 5.6267, 0.6612, 1.4362, 2.7555, 3.5326, 3.8028, 4.5778, 5.8971, 0.391, 1.7075, 2.4851, 3.111, 5.2376, 1.0482]
+  mic_el: [0, 0.7308, 0.7307, 0.7299, 1.2319, 1.2316, 1.2319, 1.2317, 1.2316, 1.2315, 1.9097, 1.9099, 1.91, 1.9101, 1.9098, 1.9099, 2.4108, 2.4109, 2.4117]
+  gain: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+hoa_encoding:
+  sh_order: 3 
+  b_n_len: 2048 
+  beamformer_order: 3
